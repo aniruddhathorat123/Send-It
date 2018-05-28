@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Log Out"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:visibility="visible"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:onClick="log_out_click"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20dp"
+        android:id="@+id/select_id"
+        android:text="Select your application type"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/select_id"
+        android:layout_marginTop="30dp"
+        android:text="Leave Application"
+        android:id="@+id/leave_app"
+        android:onClick="leave_bt_click"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/leave_app"
+        android:text="Event Application"
+        android:id="@+id/event_app"
+        android:onClick="event_bt_click"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/event_app"
+        android:text="Defaulter Application"
+        android:id="@+id/defaulter_app"
+        android:onClick="defaulter_bt_click"
+        android:layout_marginTop="10dp"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/leave_app"
+            android:text="Event Application"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date:  "
+            android:id="@+id/date"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="15dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="today"
+            android:id="@+id/today_date"
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/date"
+            android:layout_marginTop="70dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Of Event:"
+            android:textColor="#000000"
+            android:id="@+id/event_msg"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@+id/event_msg"
+            android:singleLine="true"
+            android:text=""
+            android:id="@+id/event_name"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="College Name:"
+            android:layout_marginTop="160dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/clg_name_txt"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:id="@+id/host_clg_name"
+            android:layout_toRightOf="@+id/clg_name_txt"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="15dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_marginLeft="60dp"
+            android:textSize="15dp"
+            android:id="@+id/event_from_date"
+            android:layout_marginTop="200dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginTop="240dp"
+            android:layout_marginLeft="15dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:id="@+id/event_to_date"
+            android:textSize="15dp"
+            android:layout_marginTop="240dp"
+            android:layout_marginLeft="60dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parent's contact No.:"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/textView" />
+
+        <EditText
+            android:id="@+id/event_parent_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="160dp"
+            android:ems="10"
+            android:text=""
+            android:inputType="number"
+            android:maxLength="10"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
+            android:text="Clear"
+            android:id="@+id/leave_clear_bt"
+            android:onClick="leave_clear_click"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:layout_toRightOf="@id/leave_clear_bt"
+            android:text="Send"
+            android:id="@+id/leave_Send_bt"
+            android:onClick="leave_send_click"
+            android:layout_marginRight="20dp"
+            />
+    </RelativeLayout>
+
+</ScrollView>

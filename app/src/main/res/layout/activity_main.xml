@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="aniruddha.com.college_application_app.MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:text="Hello, If you are new user then go to Sign up and fill details otherwise , go to login section"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="#000FFF"
+        />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:text="Sign Up"
+        android:onClick="signup_bt_click"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/signup"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/login"
+        android:text="Login"
+        android:onClick="login_bt_click"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/check"
+        android:text="Click to retry"
+        android:onClick="net_check"
+        />
+</RelativeLayout>
