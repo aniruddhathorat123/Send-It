@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,12 +39,13 @@ import java.util.Calendar;
 public class leave_app extends Activity
 {
     private TextView cur_date,from_date,to_date;
-    public EditText reason,parent_no;
-    public String todate,from,to,rson,pno,user,pass,server_resp="";
+    public EditText reason;
+    public String todate,from,to,rson,user,pass,server_resp="";
     JSONObject jsonObject,jsondata;
     JSONArray jsonArray;
     private DatePickerDialog.OnDateSetListener from_date_listener;
     private DatePickerDialog.OnDateSetListener to_date_listener;
+    ProgressDialog progressdialog;
 
 
     @Override
@@ -73,11 +76,13 @@ public class leave_app extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leave_app);
 
+        progressdialog =new ProgressDialog(this);
+        progressdialog.setIndeterminate(false);
+        progressdialog.setMessage("Please Wait...");
         cur_date=(TextView) findViewById(R.id.today_date);
         from_date=(TextView) findViewById(R.id.leave_from_date);
         to_date=(TextView) findViewById(R.id.leave_to_date);
         reason = (EditText)findViewById(R.id.leave_reason);
-        parent_no = (EditText) findViewById(R.id.leave_parent_contact);
 
 
         Calendar today = Calendar.getInstance();
@@ -148,16 +153,15 @@ public class leave_app extends Activity
         from = from_date.getText().toString().trim();
         to = to_date.getText().toString().trim();
         rson = reason.getText().toString().trim();
-        pno = parent_no.getText().toString().trim();
         Login_Activity.login_class lc = new Login_Activity.login_class();
         user= lc.get_log_uname();
         pass = lc.get_log_pass();
 
-        if(from!="Date" && !to.equals("Date") && !rson.equals("") && !pno.equals("") && pno.length()==10)
+        if(from!="Date" && !to.equals("Date") && !rson.equals(""))
         {
             //Toast.makeText(getApplicationContext(),"Correct data..."+todate+from+to+rson+pno+user+pass,Toast.LENGTH_LONG).show();
             Send_leaveapp send_leaveapp = new Send_leaveapp();
-            send_leaveapp.execute(user, pass, todate, from, to, rson, pno);
+            send_leaveapp.execute(user, pass, todate, from, to, rson);
         }
         else
         {
@@ -170,11 +174,16 @@ public class leave_app extends Activity
         from_date.setText("Date");
         to_date.setText("Date");
         reason.setText("");
-        parent_no.setText("");
     }
 
     public class Send_leaveapp extends AsyncTask<String,Void,String>
     {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressdialog.show();
+        }
+
         @Override
         protected String doInBackground(String... args)
         {
@@ -192,8 +201,7 @@ public class leave_app extends Activity
                         +"&"+URLEncoder.encode("todate","UTF-8")+"="+URLEncoder.encode(args[2],"UTF-8")
                         +"&"+URLEncoder.encode("from","UTF-8")+"="+URLEncoder.encode(args[3],"UTF-8")
                         +"&"+URLEncoder.encode("to","UTF-8")+"="+URLEncoder.encode(args[4],"UTF-8")
-                        +"&"+URLEncoder.encode("rson","UTF-8")+"="+URLEncoder.encode(args[5],"UTF-8")
-                        +"&"+URLEncoder.encode("pno","UTF-8")+"="+URLEncoder.encode(args[6],"UTF-8");
+                        +"&"+URLEncoder.encode("rson","UTF-8")+"="+URLEncoder.encode(args[5],"UTF-8");
                 bufferedWriter.write(leave_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -234,6 +242,7 @@ public class leave_app extends Activity
         protected void onPostExecute(String resp)
         {
             super.onPostExecute(resp);
+            progressdialog.dismiss();
             switch (resp)
             {
                 case "00":
@@ -247,7 +256,6 @@ public class leave_app extends Activity
                     from_date.setText("Date");
                     to_date.setText("Date");
                     reason.setText("");
-                    parent_no.setText("");
                     finish();
                     break;
                 default:

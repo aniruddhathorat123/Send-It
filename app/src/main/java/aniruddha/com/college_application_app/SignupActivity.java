@@ -1,11 +1,13 @@
 package aniruddha.com.college_application_app;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -32,11 +34,16 @@ public class SignupActivity extends AppCompatActivity {
     JSONObject jsonObject,jsondata;
     JSONArray jsonArray;
     String server_res;
+    ProgressDialog progressdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        progressdialog =new ProgressDialog(this);
+        progressdialog.setIndeterminate(false);
+        progressdialog.setMessage("Please Wait...");
         nm=(EditText)findViewById(R.id.stdname);
         rno=(EditText)findViewById(R.id.stdrno);
         eml=(EditText)findViewById(R.id.email);
@@ -64,6 +71,7 @@ public class SignupActivity extends AppCompatActivity {
         protected void onPreExecute()
         {
             super.onPreExecute();
+            progressdialog.show();
         }
 
         @Override
@@ -123,6 +131,7 @@ public class SignupActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String res)
         {
+            progressdialog.show();
             Toast.makeText(getApplicationContext(),res,Toast.LENGTH_LONG).show();
             if(res.contains("success")) {
                 nm.setText("");

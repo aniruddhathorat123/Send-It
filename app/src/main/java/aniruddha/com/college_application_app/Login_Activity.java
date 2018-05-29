@@ -1,6 +1,7 @@
 package aniruddha.com.college_application_app;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class Login_Activity extends AppCompatActivity {
     JSONObject jsonObject,jsondata;
     JSONArray jsonArray;
     String server_res;
+    ProgressDialog progressdialog;
 
     int flag=0;
 
@@ -46,6 +48,9 @@ public class Login_Activity extends AppCompatActivity {
 
     public void login_run(View view)
     {
+        progressdialog =new ProgressDialog(this);
+        progressdialog.setIndeterminate(false);
+        progressdialog.setMessage("Please Wait...");
            uname=username.getText().toString().trim();
            pass=password.getText().toString().trim();
            Login_backgroundTask login_backgroundTask = new Login_backgroundTask();
@@ -93,6 +98,12 @@ public class Login_Activity extends AppCompatActivity {
     class Login_backgroundTask extends AsyncTask<String,Void,String>
     {
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressdialog.show();
+        }
+
+        @Override
         protected String doInBackground(String... args)
         {
             try
@@ -138,8 +149,11 @@ public class Login_Activity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(String s)
+        {
             super.onPostExecute(s);
+
+            progressdialog.dismiss();
             if (s.equals("true")) {
                 Toast.makeText(getApplicationContext(),"Welcome...",Toast.LENGTH_LONG).show();
                 Login_Activity.login_class.set_log_pass(pass);

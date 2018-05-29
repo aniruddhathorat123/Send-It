@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -37,12 +38,13 @@ import java.util.Calendar;
 public class event_app extends Activity
 {
     private TextView cur_date,from_date,to_date;
-    public EditText event_nm,parent_no,clg_nm;
-    public String todate,from,to,event,pno,user,pass,college,server_resp="";
+    public EditText event_nm,clg_nm;
+    public String todate,from,to,event,user,pass,college,server_resp="";
     JSONObject jsonObject,jsondata;
     JSONArray jsonArray;
     private DatePickerDialog.OnDateSetListener from_date_listener;
     private DatePickerDialog.OnDateSetListener to_date_listener;
+    ProgressDialog progressdialog;
 
 
     @Override
@@ -73,11 +75,14 @@ public class event_app extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_app);
 
+        progressdialog =new ProgressDialog(this);
+        progressdialog.setIndeterminate(false);
+        progressdialog.setMessage("Please Wait...");
+
         cur_date=(TextView) findViewById(R.id.today_date);
         from_date=(TextView) findViewById(R.id.event_from_date);
         to_date=(TextView) findViewById(R.id.event_to_date);
         event_nm = (EditText)findViewById(R.id.event_name);
-        parent_no = (EditText) findViewById(R.id.event_parent_contact);
         clg_nm = (EditText) findViewById(R.id.host_clg_name);
 
         Calendar today = Calendar.getInstance();
@@ -149,16 +154,15 @@ public class event_app extends Activity
         to = to_date.getText().toString().trim();
         event = event_nm.getText().toString().trim();
         college = clg_nm.getText().toString().trim();
-        pno = parent_no.getText().toString().trim();
         Login_Activity.login_class lc = new Login_Activity.login_class();
         user= lc.get_log_uname();
         pass = lc.get_log_pass();
 
-        if(from!="Date" && !to.equals("Date") && !event.equals("") && !pno.equals("") && pno.length()==10)
+        if(from!="Date" && !to.equals("Date") && !event.equals(""))
         {
             //Toast.makeText(getApplicationContext(),"Correct data..."+todate+from+to+rson+pno+user+pass,Toast.LENGTH_LONG).show();
             Send_eventapp send_eventapp = new Send_eventapp();
-            send_eventapp.execute(user, pass, todate, from, to, event,college, pno);
+            send_eventapp.execute(user, pass, todate, from, to, event,college);
         }
         else
         {
@@ -171,11 +175,16 @@ public class event_app extends Activity
         from_date.setText("Date");
         to_date.setText("Date");
         event_nm.setText("");
-        parent_no.setText("");
     }
 
     public class Send_eventapp extends AsyncTask<String,Void,String>
     {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressdialog.show();
+        }
+
         @Override
         protected String doInBackground(String... args)
         {
@@ -194,8 +203,7 @@ public class event_app extends Activity
                         +"&"+URLEncoder.encode("from","UTF-8")+"="+URLEncoder.encode(args[3],"UTF-8")
                         +"&"+URLEncoder.encode("to","UTF-8")+"="+URLEncoder.encode(args[4],"UTF-8")
                         +"&"+URLEncoder.encode("event","UTF-8")+"="+URLEncoder.encode(args[5],"UTF-8")
-                        +"&"+URLEncoder.encode("college","UTF-8")+"="+URLEncoder.encode(args[6],"UTF-8")
-                        +"&"+URLEncoder.encode("pno","UTF-8")+"="+URLEncoder.encode(args[7],"UTF-8");
+                        +"&"+URLEncoder.encode("college","UTF-8")+"="+URLEncoder.encode(args[6],"UTF-8");
                 bufferedWriter.write(leave_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -236,6 +244,7 @@ public class event_app extends Activity
         protected void onPostExecute(String resp)
         {
             super.onPostExecute(resp);
+            progressdialog.dismiss();
             switch (resp)
             {
                 case "00":
@@ -249,7 +258,6 @@ public class event_app extends Activity
                     from_date.setText("Date");
                     to_date.setText("Date");
                     event_nm.setText("");
-                    parent_no.setText("");
                     finish();
                     break;
                 default:

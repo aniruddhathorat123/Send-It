@@ -76,6 +76,7 @@ public class app_choice extends AppCompatActivity
     }
     public void defaulter_bt_click(View view)
     {
-        Toast.makeText(getApplicationContext(),"This feature will be available in next update",Toast.LENGTH_LONG).show();
+        Intent defaulter_intent = new Intent(app_choice.this,defaulter_app.class);
+        startActivity(defaulter_intent);
     }
 }

@@ -24,11 +24,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login_Activity" />
-        <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".app_choice"></activity>
-        <activity android:name=".leave_app"></activity>
-        <activity android:name=".event_app"></activity>
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".app_choice" />
+        <activity android:name=".leave_app" />
+        <activity android:name=".event_app" />
+        <activity android:name=".about_page" />
+        <activity android:name=".defaulter_app"></activity>
     </application>
-
 
 </manifest>

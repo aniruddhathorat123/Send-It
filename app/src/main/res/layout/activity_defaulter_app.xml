@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".defaulter_app">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/defaulter_app"
+            android:text="Defaulter Application"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date:  "
+            android:id="@+id/date"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="15dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="today"
+            android:id="@+id/today_date"
+            android:textSize="15dp"
+            android:layout_toRightOf="@id/date"
+            android:layout_marginTop="70dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Academic Year:"
+            android:textColor="#000000"
+            android:id="@+id/acd_year"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@+id/acd_year"
+            android:singleLine="true"
+            android:inputType="text"
+            android:id="@+id/academic_year_id"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="Course Name:"
+            android:layout_marginTop="160dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/course_name_txt"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:inputType="text"
+            android:id="@+id/course_name_id"
+            android:layout_toRightOf="@+id/course_name_txt"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overall Attaindence(%):"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:id="@+id/attan_text"
+            android:layout_marginTop="220dp"
+            android:layout_marginLeft="15dp"
+            />
+
+        <EditText
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/attan_text"
+            android:textSize="15dp"
+            android:inputType="numberDecimal"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/attan_percent_id"
+            android:layout_marginTop="220dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester No."
+            android:textColor="#000000"
+            android:id="@+id/sem_text"
+            android:textSize="15dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="15dp"
+            />
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/sem_text"
+            android:id="@+id/semester_id"
+            android:textSize="15dp"
+            android:inputType="numberSigned"
+            android:layout_marginTop="240dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="30dp"
+            android:text="Clear"
+            android:id="@+id/defaulter_clear_bt"
+            android:onClick="defaulter_clear_click"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:layout_toRightOf="@id/defaulter_clear_bt"
+            android:text="Send"
+            android:id="@+id/defaulter_Send_bt"
+            android:onClick="defaulter_send_click"
+            android:layout_marginRight="20dp"
+            />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="aniruddha.com.college_application_app.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="About"
+        android:onClick="about_click"
+        android:id="@+id/about_bt"
+        />
 
     <TextView
         android:layout_width="match_parent"

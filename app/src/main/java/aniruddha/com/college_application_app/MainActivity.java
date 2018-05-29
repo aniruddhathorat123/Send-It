@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void about_click(View view)
+    {
+        Intent about_intent = new Intent(MainActivity.this, about_page.class);
+        startActivity(about_intent);
+    }
+
     public void login_bt_click(View view)
     {
         Intent login_clk = new Intent(MainActivity.this,Login_Activity.class);

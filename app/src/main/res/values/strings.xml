@@ -14,4 +14,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="about_message_1"> This application is very benefical for sending leave or
+        event or other application online to your teacher's email.</string>
+    <string name="about_message_2">Just create accout with your appropriate college data, then login it with username and password,
+        and select-fill-submit your application </string>
+    <string name="about_message_3">For more details visit : http://matrix-host.000webhostapp.com/sendit</string>
+    <string name="about_message_4">Glad to Help You...</string>
+    <string name="about_message_5">Team Send-It</string>
 </resources>
